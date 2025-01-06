@@ -1,0 +1,9 @@
+for labels
+http-server -p 8080 --cors
+
+
+for models
+http-server -p 8081 --cors
+
+
+change IP Address of the source code and labels

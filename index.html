@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script defer src="face-api.min.js"></script>
+  <script defer src="script.js"></script>
+  <title>Proceed to Pay</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 500px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .payment-logo {
+      display: block;
+      margin: 0 auto 20px;
+      height: 100px;
+      width: 450px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .amount-to-pay {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #28a745;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <img src="https://i.ibb.co/X7ChBsR/payment2.png" alt="Payment Logo" class="payment-logo">
+  <h2>Proceed to Pay</h2>
+  <p id="amountToPay" class="amount-to-pay"></p>
+  <form id="userDataForm">
+    <div class="form-group">
+      <label for="number">Number</label>
+      <input type="text" class="form-control" id="number" required placeholder="0000 0000 0000 0000" maxlength="19">
+    </div>
+    <div class="form-group">
+      <label for="expireDate">Expire Date</label>
+      <input type="text" class="form-control" id="expireDate" required placeholder="MM/YY" maxlength="5">
+    </div>
+    <div class="form-group">
+      <label for="cvv">CVV</label>
+      <input type="text" class="form-control" id="cvv" required placeholder="CVV" maxlength="3">
+    </div>
+    <button type="submit" id="verifyButton" class="btn btn-primary btn-block">Verify User</button>
+  </form>
+  <div id="imageUploadSection" style="display: none;">
+    <input type="file" id="imageUpload" class="form-control-file">
+    <img id="previewImage" src="#" alt="Image Preview" style="display: none; width: 300px; height: 300px;" />
+    <button id="uploadButton" class="btn btn-success btn-block mt-2">Upload</button>
+  </div>
+
+</div>
+<script>
+  // Extract the amount parameter from the URL and display it
+  const urlParams = new URLSearchParams(window.location.search);
+  const amount = urlParams.get('amount');
+  if (amount) {
+    document.getElementById('amountToPay').textContent = `Amount to Pay: $${amount}`;
+  } else {
+    document.getElementById('amountToPay').textContent = 'Amount to Pay: $0'; // Default amount
+  }
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

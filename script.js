@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     const result = await response.json();
+    
     if (response.ok && result.userId && result.image) {
       alert('User verified. Please upload a photo for face verification.');
       sessionStorage.setItem('faceDescriptorPath', result.image);
@@ -136,13 +137,19 @@ document.addEventListener('DOMContentLoaded', function () {
           status: transactionStatus,
           location: userLocation,
         }),
-      });
-
-      if (match) {
-        alert('Face matched successfully! Redirecting...');
-      } else {
-        alert('Face did not match. Redirecting...');
-      }
+      }).then(async (response) => {
+        if (response.ok) {
+          if (match) {
+            alert('Face matched successfully !\nTransaction added successfully !\nRedirecting ...');
+          } else {
+            alert('Face did not match. Redirecting...');
+          }
+        } else {
+          const errorMessage = await response.text(); 
+          console.error('Failed to add transaction:', errorMessage);
+          alert(errorMessage)
+        }
+      })
 
       // Redirect to another page
       window.location.href = 'http://localhost:3000/';

@@ -153,6 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Redirect to another page
       window.location.href = 'http://localhost:3000/';
+      console.log('Error ........!!!');
     } catch (error) {
       console.error('Error processing image:', error);
       alert('An error occurred while processing the image.');

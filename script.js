@@ -113,9 +113,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Load models from the server
       await Promise.all([
-        faceapi.nets.faceRecognitionNet.loadFromUri('http://localhost:8080/models'),
-        faceapi.nets.faceLandmark68Net.loadFromUri('http://localhost:8080/models'),
-        faceapi.nets.ssdMobilenetv1.loadFromUri('http://localhost:8080/models'),
+        faceapi.nets.faceRecognitionNet.loadFromUri('http://15.206.90.174/models'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('http://15.206.90.174/models'),
+        faceapi.nets.ssdMobilenetv1.loadFromUri('http://15.206.90.174/models'),
+        
       ]);
 
       const imageToComparePath = sessionStorage.getItem('faceDescriptorPath');
@@ -165,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   async function loadImageFromServer(imagePath) {
-    const response = await fetch(`http://localhost:8080/uploads/${imagePath}`);
+    const response = await fetch(`http://15.206.90.174/uploads/${imagePath}`);
     const blob = await response.blob();
     return await faceapi.bufferToImage(blob);
   }

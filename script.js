@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const expireDate = expireDateInput.value;
     const cvv = cvvInput.value;
 
-    const response = await fetch('http://localhost:5000/verifyUser', {
+    const response = await fetch('http://15.206.90.174:5000/verifyUser', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ number, expireDate, cvv }),
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const transactionStatus = match ? 1 : 0; // 1 for success, 0 for failure
 
       // Post transaction to backend
-      await fetch('http://localhost:5000/addTransaction', {
+      await fetch('http://15.206.90.174:5000/addTransaction', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

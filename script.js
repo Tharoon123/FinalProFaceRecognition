@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const expireDate = expireDateInput.value;
     const cvv = cvvInput.value;
 
-    const response = await fetch('http://15.206.90.174:5000/verifyUser', {
+    const response = await fetch('http://13.127.178.202:5000/verifyUser', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ number, expireDate, cvv }),
@@ -113,9 +113,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Load models from the server
       await Promise.all([
-        faceapi.nets.faceRecognitionNet.loadFromUri('http://15.206.90.174/models'),
-        faceapi.nets.faceLandmark68Net.loadFromUri('http://15.206.90.174/models'),
-        faceapi.nets.ssdMobilenetv1.loadFromUri('http://15.206.90.174/models'),
+        faceapi.nets.faceRecognitionNet.loadFromUri('http://13.127.178.202/models'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('http://13.127.178.202/models'),
+        faceapi.nets.ssdMobilenetv1.loadFromUri('http://13.127.178.202/models'),
         
       ]);
 
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const transactionStatus = match ? 1 : 0; // 1 for success, 0 for failure
 
       // Post transaction to backend
-      await fetch('http://15.206.90.174:5000/addTransaction', {
+      await fetch('http://13.127.178.202:5000/addTransaction', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

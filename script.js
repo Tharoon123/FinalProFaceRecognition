@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   async function loadImageFromServer(imagePath) {
-    const response = await fetch(`http://15.206.90.174/uploads/${imagePath}`);
+    const response = await fetch(`http://13.127.178.202/uploads/${imagePath}`);
     const blob = await response.blob();
     return await faceapi.bufferToImage(blob);
   }
